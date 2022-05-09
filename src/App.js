@@ -16,7 +16,9 @@ function App() {
   }
 
   return (
-    pass
+    <div>
+      <DisplayMusic parentSongs={songs} />
+    </div>
   );
 }
 
