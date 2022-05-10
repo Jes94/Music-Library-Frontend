@@ -14,8 +14,13 @@ function App() {
   }, [])
 
   async function getAllSongs(){
+    try{
     let response = await axios.get('http://127.0.0.1:8000/music/')
     setSongs(response.data)
+    }
+    catch (ex) {
+      console.log('Error in getting all songs')
+    }
   }
   const [filters, setFilters] = useState({});
   const updateFilters = (searchParams) => {

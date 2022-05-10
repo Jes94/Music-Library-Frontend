@@ -10,6 +10,7 @@ const AddSong = () => {
     const[genre, setGenre] = useState('')
 
     async function handleSubmit(event) {
+        try{
         event.preventDefault();
         let newSong = {
             title: title,
@@ -22,7 +23,10 @@ const AddSong = () => {
         if(response.status === 201){
             alert('Song Added!')
             window.location.reload();
-        }   
+        }   }
+        catch(ex){
+            console.log('Error while posting song to database')
+        }
     }
     return (
         <div className="container">
