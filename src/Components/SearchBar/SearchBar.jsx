@@ -5,9 +5,10 @@ function SearchBar(props) {
     const [artist, setArtist] = useState("")
     const [album, setAlbum] = useState("")
     const [genre, setGenre] = useState("")
+    const [release_date, setReleaseDate] = useState("")
 
     const searchButtonPressed = () => {
-        props.updateSearchParams({title: title, artist: artist, album: album, genre: genre})
+        props.updateSearchParams({title: title, artist: artist, album: album, genre: genre, release_date:release_date})
     };
     return (
         <div className="container">
@@ -31,6 +32,11 @@ function SearchBar(props) {
                         <label htmlFor="genre-field">Genre:</label>
                         <input className="form-control" id="genre-field" type="text" value={genre} onChange={(event) => setGenre(event.target.value)}/>
                     </div>
+                    <div className="col">
+                        <label htmlFor="date-field">Release Date:</label>
+                        <input className="form-control" id="date-field" type="date" value={release_date} onChange={(event) => setReleaseDate(event.target.value)}/>
+                    </div>
+
                 </div>
                 <div className="row mt-3">
                     <div className="col-9"/>

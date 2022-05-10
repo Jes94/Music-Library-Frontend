@@ -23,26 +23,27 @@ function App() {
   }
   const filterSongs = (data) => {
     const filteredSongs = [];
-    if(!filters){
-      return data
-    }
 
-    for (const song of songs){
-      if (filters.title !== "" && song.title !== filters.title){
+    for (const song of data){
+      if (filters.title !== "" && song.title !== filters.title && filters.title !== undefined){
         continue;
       }
 
-      if (filters.artist !== "" && song.artist !== filters.artist){
+      if (filters.artist !== "" && song.artist !== filters.artist && filters.artist !== undefined){
         continue;
       }
 
-      if (filters.album !== "" && song.album !== filters.album){
+      if (filters.album !== "" && song.album !== filters.album && filters.album !== undefined){
         continue;
       }
 
-      if (filters.genre !== "" && song.genre !== filters.genre){
+      if (filters.genre !== "" && song.genre !== filters.genre && filters.genre !== undefined){
         continue;
       }
+      if (filters.release_date !== "" && song.release_date !== filters.release_date && filters.release_date !== undefined){
+        continue;
+      }
+
       filteredSongs.push(song);
     }
     return filteredSongs;
