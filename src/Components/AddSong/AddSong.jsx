@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 
-const AddSong = (props) => {
+const AddSong = () => {
     const[title, setTitle] = useState('')
     const[artist, setArtist] = useState('')
     const[album, setAlbum] = useState('')
@@ -21,24 +21,41 @@ const AddSong = (props) => {
         let response = await axios.post('http://127.0.0.1:8000/music/', newSong)
         if(response.status === 201){
             alert('Song Added!')
+            window.location.reload();
         }   
     }
     return (
-        <form onSubmit={handleSubmit} className='form-grid'>
-            <div className="form-group row">
-                <label htmlFor="inputTitle" className="col-sm-2">Title</label>
+        <div className="container">
+            <h4>Add a song</h4>
+        <form onSubmit={handleSubmit} className='form'>
+            <div className="row">
+                <div className="col">
+                <label htmlFor="inputTitle">Title</label>
                 <input type="text" className="form-control" id="inputTitle" value={title} onChange = {(event) => setTitle(event.target.value)}/>
-                <label htmlFor="inputArtist" className="col-sm-2">Artist</label>
+                </div>
+                <div className="col">
+                <label htmlFor="inputArtist">Artist</label>
                 <input type="text" className="form-control" id="inputArtist" value={artist} onChange = {(event) => setArtist(event.target.value)}/>
-                <label htmlFor="inputAlbum" className="col-sm-2">Album</label>
+                </div>
+                <div className="col">
+                <label htmlFor="inputAlbum">Album</label>
                 <input type="text" className="form-control" id="inputAlbum" value={album} onChange = {(event) => setAlbum(event.target.value)}/>
-                <label htmlFor="inputDate" className="col-sm-2">Release Date</label>
+                </div>
+                <div className="col">
+                <label htmlFor="inputDate">Release Date</label>
                 <input type="date" className="form-control" id="inputDate" value={release_date} onChange = {(event) => setReleaseDate(event.target.value)}/>
-                <label htmlFor="inputGenre" className="col-sm-2">Genre</label>
+                </div>
+                <div className="col">
+                <label htmlFor="inputGenre">Genre</label>
                 <input type="text" className="form-control" id="inputGenre" value={genre} onChange = {(event) => setGenre(event.target.value)}/>
+                </div>
             </div>
-            <button type='submit' className="btn btn-primary">Add</button>
+            <div className="row mt-3">
+                <div className="col-9"/>
+                <button type='submit' className= "col-3 btn btn-primary">Add</button>
+            </div>
         </form>
+        </div>
     )
 }
 export default AddSong;
